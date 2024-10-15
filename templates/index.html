@@ -1,0 +1,70 @@
+{% extends 'base.html' %} {% block head %}
+
+<form id="form" action="/" method="post" enctype="multipart/form-data">
+  <div class="main">
+    <label for="input-file" id="drop-area">
+      <input name="file" type="file" accept="video/*" id="input-file" hidden />
+      <div id="img-view">
+        <img src="{{ url_for('static', filename='upload.png') }}" />
+        <p>Drag and Drop <div>or</div> <div class="text-line">Click here to upload video</div></p>
+      </div>
+    </label>
+
+    
+    <div class="options">
+      <div class="language-selection">
+        <div class="select-lang">
+          <label for="input-file-url" id="url">
+            <input class="url" name="url" type="text" placeholder="Youtube Link" autocomplete="off">
+          </label>
+          <label for="lang" style="font-size: 20px; text-decoration:underline; margin-top:18px">Choose languages:</label>
+          <div class="language-list">
+            <label>
+              <input name="lang" type="checkbox" value="pa-IN"></input>
+              <p>Punjabi</p>
+            </label>
+            <label>
+              <input name="lang" type="checkbox" value="te-IN"></input>
+              <p>Telugu</p>
+            </label>
+            <label>
+              <input name="lang" type="checkbox" value="hi-IN"></input>
+              <p>Hindi</p>
+            </label>
+            <label>
+              <input name="lang" type="checkbox" value="ta-IN"></input>
+              <p>Tamil</p>
+            </label>
+            <label>
+              <input name="lang" type="checkbox" value="mr-IN"></input>
+              <p>Marathi</p>
+            </label>
+            <label>
+              <input name="lang" type="checkbox" value="bn-IN"></input>
+              <p>Bengali</p>
+            </label>
+            <label>
+              <input name="lang" type="checkbox" value="gu-IN"></input>
+              <p>Gujarati</p>
+            </label>
+         </div>
+        
+          <div class="text-super">
+            <input type="checkbox" id="super" name="super" value="True">
+            <label for="super">Select if the video contain <br>text supers</label>
+          </div>
+          <button value="Submit" id="upload">Upload</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<script>
+  document.querySelector("form").addEventListener("submit", () => loading());
+  function loading() {
+    document.getElementById("preload").classList.add("loading");
+  }
+</script>
+
+{% endblock %}
